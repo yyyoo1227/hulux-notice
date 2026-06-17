@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HULUX — Light for Life</title>
+    <title>HULUX — 해산 및 채권신고공고</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,13 +21,13 @@
             justify-content: center;
             background: #060a12;
             color: #e0e4ec;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: -50%;
             left: -50%;
             width: 200%;
@@ -37,6 +37,7 @@
                 radial-gradient(ellipse at 65% 55%, rgba(60, 160, 140, 0.06) 0%, transparent 45%),
                 radial-gradient(ellipse at 50% 70%, rgba(80, 120, 180, 0.05) 0%, transparent 50%);
             animation: glow 16s ease-in-out infinite alternate;
+            z-index: 0;
         }
 
         @keyframes glow {
@@ -49,7 +50,8 @@
             z-index: 1;
             text-align: center;
             padding: 3rem 2rem;
-            max-width: 640px;
+            max-width: 700px;
+            width: 100%;
             animation: fadeUp 1.4s ease-out;
         }
 
@@ -86,26 +88,15 @@
             margin: 2rem auto;
         }
 
-        .welcome {
-            font-size: 1.05rem;
-            font-weight: 300;
-            line-height: 2.1;
-            color: rgba(224, 228, 236, 0.65);
-            letter-spacing: 0.01em;
-        }
-
-        .welcome strong {
-            font-weight: 500;
-            color: rgba(224, 228, 236, 0.88);
-        }
-
-        /* 아이콘 영역 */
-        .icons {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-top: 2rem;
-            animation: fadeIn 2s ease-out 0.6s both;
+        /* 공고문 영역 */
+        .notice {
+            margin-top: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(200, 169, 110, 0.12);
+            border-radius: 6px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            animation: fadeIn 2s ease-out 0.4s both;
         }
 
         @keyframes fadeIn {
@@ -113,22 +104,101 @@
             100% { opacity: 1; }
         }
 
+        .notice-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(224, 228, 236, 0.85);
+            margin-bottom: 2rem;
+            letter-spacing: 0.08em;
+        }
+
+        .notice-body {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 2;
+            color: rgba(224, 228, 236, 0.6);
+            text-align: left;
+            text-indent: 1em;
+            margin-bottom: 2rem;
+            word-break: keep-all;
+        }
+
+        .notice-date {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: rgba(224, 228, 236, 0.55);
+            margin-bottom: 2.5rem;
+        }
+
+        .notice-company {
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 2;
+            color: rgba(224, 228, 236, 0.55);
+        }
+
+        .notice-company .name {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: rgba(224, 228, 236, 0.75);
+            margin-bottom: 0.3rem;
+        }
+
+        .notice-company .address {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(224, 228, 236, 0.4);
+            line-height: 1.8;
+        }
+
+        .notice-company .liquidator {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: rgba(224, 228, 236, 0.55);
+        }
+
+        .notice-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(200, 169, 110, 0.15);
+            margin: 1.5rem auto;
+        }
+
+        /* 아이콘 영역 */
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            animation: fadeIn 2s ease-out 0.8s both;
+        }
+
         .icons svg {
-            width: 28px;
-            height: 28px;
-            opacity: 0.25;
+            width: 24px;
+            height: 24px;
+            opacity: 0.18;
             transition: opacity 0.4s ease;
         }
 
         .icons svg:hover {
-            opacity: 0.45;
+            opacity: 0.35;
         }
 
         .footer {
-            margin-top: 3.5rem;
+            margin-top: 2.5rem;
             font-size: 0.75rem;
-            color: rgba(224, 228, 236, 0.18);
+            color: rgba(224, 228, 236, 0.15);
             letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1.2rem; }
+            .logo { font-size: 2.4rem; }
+            .notice { padding: 1.8rem 1.2rem; }
+            .notice-title { font-size: 1.2rem; }
+            .notice-body { font-size: 0.88rem; }
         }
     </style>
 </head>
@@ -137,10 +207,28 @@
         <div class="logo">HULUX</div>
         <div class="tagline">LIGHT FOR LIFE</div>
         <div class="divider"></div>
-        <p class="welcome">
-            <strong>HULUX 홈페이지에 방문해 주셔서 감사합니다.</strong><br>
-            빛으로 더 건강한 내일을 열어갑니다.
-        </p>
+
+        <div class="notice">
+            <div class="notice-title">해산 및 채권신고공고 (1차)</div>
+
+            <p class="notice-body">
+                본 회사는 2026년 6월 4일 주주총회에 따라 해산을 결의하였으므로 당 회사의 해산에 대하여 이의가 있으신 분이나 채권이 있으신 분은 본 공고 게재 익일로부터 2개월 이내에 이의 및 그 채권액을 신고하여 주시기 바랍니다. 만약 위 기간 내에 신고가 없으면 청산에서 제외됨을 공고합니다.
+            </p>
+
+            <div class="notice-date">2026년 6월 17일</div>
+
+            <div class="notice-divider"></div>
+
+            <div class="notice-company">
+                <div class="name">주식회사 휴룩스</div>
+                <div class="address">
+                    경기도 성남시 중원구 사기막골로 124,<br>
+                    비즈동 1409호 (상대원동, 에스케이엔테크노파크)
+                </div>
+                <div class="liquidator">청산인 이용진</div>
+            </div>
+        </div>
+
         <div class="icons">
             <!-- LED / Light -->
             <svg viewBox="0 0 24 24" fill="none" stroke="rgba(200,169,110,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -171,6 +259,7 @@
                 <line x1="7" y1="19" x2="17" y2="19"/>
             </svg>
         </div>
+
         <div class="footer">&copy; 2026 HULUX. All rights reserved.</div>
     </div>
 </body>
